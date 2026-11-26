@@ -88,6 +88,12 @@ JOIN bookings b ON m.movie_id = b.movie_id
 JOIN theatre t ON b.theatre_id = t.theatre_id
 WHERE booking_date >= '2026-11-21' and tickets >=4;
 
+SELECT t.theatre_name,count(b.booking_id) as total_customers,b.tickets
+FROM movie m 
+JOIN bookings b ON m.movie_id = b.movie_id
+JOIN theatre t ON b.theatre_id = t.theatre_id
+group by t.theatre_name,b.tickets;
+
 SELECT b.booking_id,t.theatre_name,t.location,m.movie_name,m.LANGUAGE,b.customer_name,b.tickets,b.booking_date
 FROM movie m 
 LEFT JOIN bookings b ON m.movie_id = b.movie_id
